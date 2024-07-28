@@ -1,0 +1,24 @@
+{
+  "copyFiles": [
+    {
+      "from": "/src/static/**/*",
+      "to": "/dist/static"
+    }
+  ],
+  "copyFilesSettings": {
+    "whenFileExists": "notify-about-available-change",
+    "addReferenceToSourceOfOrigin": false,
+    "ignoreDotFilesAndFolders": true,
+    "removeSourceMappingURL": false,
+    "minifyJs": true,
+    "minifyJsTerserOptions": {
+      "compress": {
+        "sequences": false
+      },
+      "mangle": false,
+      "format": {
+        "semicolons": false
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{{!-- <style>
+  #holder {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px
+  }
+
+  #kuku {
+    background-color: antiquewhite;
+    border-radius: 8px;
+  }
+
+  #kuku p {
+    margin-left: 15px;
+  }
+</style> --}}
+
+<div id="holder">
+  {{#each characters}}
+  <div id="kuku">
+    <p>{{charater_name}} ({{age}})</p>
+    <p>Actor: {{actor}}</p>
+  </div>
+  {{/each}}
+</div>

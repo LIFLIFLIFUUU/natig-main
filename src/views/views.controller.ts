@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { getAll } from "../characters/character.model";
+import { getAll } from "../officeWorker/officeWorker.model";
 
 export async function loadAboutPage(req: Request, res: Response) {
   const data = {
@@ -26,4 +26,25 @@ export async function loadCharactersPage(req: Request, res: Response) {
   ]
   console.log(characters)
   res.render('./pages/characters', { characters });
+}
+
+export async function loadBdikaPage(req: Request, res: Response) {
+  // const data = {
+  //   string: "bdika"
+  // }
+
+  const data = await getAll();
+
+  //המרה של ה ObjectId למחרוזת
+  let clients = data.map((item)=> {
+
+    let id = item._id.toString()
+    return {
+      ...item,
+      _id: id //שמירה של המחרוזתבתכונה המתאימה
+    }
+  })
+
+  //שליחת המידע לדף המתאים
+  res.render('./pages/bdika', {clients});
 }

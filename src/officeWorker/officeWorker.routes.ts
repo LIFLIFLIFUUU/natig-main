@@ -14,5 +14,4 @@ officeWorkersRouter
      .post('/addWorker', addWorker) // v תומר
     // .get('/viewClientDocuments', viewClientDocuments) // ביחד
     // .post('/validateClientDocuments', validateClientDocuments) // ביחד
-    // .put('/updateWorkerTime', updateWorkerTime) // ביחד
     export default officeWorkersRouter

@@ -11,7 +11,7 @@
     "copyAll": "npm run copyStatic && npm run copyViews",
     "build": "npx tsc && npm run copyAll",
     "dev": "nodemon ./src/main.ts",
-    "copy":"copy-files-from-to"
+    "copy": "copy-files-from-to"
   },
   "keywords": [],
   "author": "",

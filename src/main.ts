@@ -9,13 +9,16 @@ import viewRouter from './views/views.routes';
 
 //config
 //process.env.PORT --> the live server port
-const PORT = process.env.PORT || 9812; 
+const PORT = process.env.PORT || 9999; 
 
 //create the server
 const server = express();
 
 //config JSON support
 server.use(express.json());
+
+// Middleware to parse URL-encoded bodies
+server.use(express.urlencoded({ extended: true }));
 
 //views
 server.engine('.hbs', engine({extname: '.hbs'}));

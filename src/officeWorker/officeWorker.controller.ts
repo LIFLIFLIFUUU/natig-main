@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { deleteClientFromDb, findByPersonalIdAndPassword, getAll, getByEmail, getById, getWorkerById, insertClient, insertWorker, updateClientInDb} from './officeWorker.model';
+import { deleteClientFromDb, findByEmailAndPassword, getAll, getByEmail, getById, getWorkerById, insertClient, insertWorker, updateClientInDb} from './officeWorker.model';
 import { findAll } from './officeWorker.db';
 import { officeWorker } from './officeWorker.type';
 import { ObjectId, WithId } from 'mongodb';
@@ -145,11 +145,13 @@ export async function deleteClient(req: Request, res: Response) {
 export async function login(req: Request, res: Response) {
     try {
 
-        const { personal_id, password } = req.body;
+        const { email, password } = req.body;
+
+        console.log(`${JSON.stringify(req.body)}`);
 
         // Validate required fields
-        if (!personal_id || !password) {
-            res.status(400).json({ message: 'ID and password must be provided' });
+        if (!email || !password) {
+            res.status(400).json({ message: 'Email and password must be provided' });
             return;
         }
 
@@ -159,7 +161,7 @@ export async function login(req: Request, res: Response) {
         // לדוגמה ראוט יכול לגשת רק לפונקציות של קונטרולר
 
         // Fetch all office workers
-        const officeWorker: officeWorker = await findByPersonalIdAndPassword(personal_id, password); //await findAll(); 
+        const officeWorker: officeWorker = await findByEmailAndPassword(email, password); //await findAll(); 
         // const office_worker = allOfficeWorkers.find(
         //     (worker: officeWorker) => worker._id.toString() === _id
         // );
@@ -170,7 +172,7 @@ export async function login(req: Request, res: Response) {
         if (officeWorker) {
             res.status(200).json({ msg: 'Office worker found!',officeWorker });
         } else {
-            res.status(400).json({ msg: 'Invalid ID or password' });
+            res.status(400).json({ msg: 'Invalid Email or password' });
         }
     } catch (error) {
         res.status(500).json({ message: 'Server error', error });

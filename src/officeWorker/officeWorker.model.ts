@@ -56,8 +56,8 @@ export async function insertClient(
   return await addClientToDatabase(newClient);
 }
 
-export async function findByPersonalIdAndPassword(personal_id: string, password: string) {
-  let query = { personal_id, password };
+export async function findByEmailAndPassword(email: string, password: string) {
+  let query = { email, password };
   let projection = { password: 0 };
   let officeworker = await findAll(query, projection);
   return officeworker[0];

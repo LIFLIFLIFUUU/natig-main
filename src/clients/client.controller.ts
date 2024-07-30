@@ -47,7 +47,7 @@ export async function login(req: Request, res: Response) {
         if (client) {
             res.status(200).json({ msg: 'Client found!',client });
         } else {
-            res.status(400).json({ msg: 'Invalid ID or password' });
+            res.status(400).json({ msg: 'Invalid Email or password' });
         }
     } catch (error) {
         res.status(500).json({ message: 'Server error', error });

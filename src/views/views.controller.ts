@@ -48,3 +48,21 @@ export async function loadBdikaPage(req: Request, res: Response) {
   //שליחת המידע לדף המתאים
   res.render('./pages/bdika', {clients});
 }
+
+export async function loadWorkerLoginPage(req: Request, res: Response) {
+
+
+  res.render('./pages/workerLogin');
+}
+
+export async function loadClientLoginPage(req: Request, res: Response) {
+
+
+  res.render('./pages/clientLogin');
+}
+
+
+
+
+
+
